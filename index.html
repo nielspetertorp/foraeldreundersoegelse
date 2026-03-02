@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="da"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Spørgeskemaundersøgelse – Silkeborg Friskole (forår 2026)&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root { --card-max: 980px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; line-height: 1.45; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card { max-width: var(--card-max); margin: 0 auto; padding: 18px; border: 1px solid #ddd; border-radius: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 { margin-top: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>fieldset { border: 1px solid #e3e3e3; border-radius: 12px; padding: 14px; margin: 14px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>legend { padding: 0 8px; font-weight: 700; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>label { display:block; font-weight: 600; margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>select, textarea, input[type="text"] { width:100%; padding: 10px; margin-top: 6px; font-size: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>textarea { min-height: 90px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.muted { color: #555; font-size: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.small { font-size: 13px; color:#666; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hidden { display:none !important; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.likert { display: grid; gap: 8px; margin-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.likert label { font-weight: 500; margin-top: 0; display:flex; gap: 10px; align-items:center; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid5 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 720px) { .grid5 { grid-template-columns: 1fr; } }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.ok { padding: 10px; border: 1px solid #cfc; background: #f3fff3; border-radius: 10px; margin: 12px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.err { padding: 10px; border: 1px solid #fcc; background: #fff3f3; border-radius: 10px; margin: 12px 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Wizard */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.topbar { display:flex; gap: 12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stepTitle { font-weight: 700; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.progressWrap { width: 100%; margin: 10px 0 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.progressTrack { height: 10px; border-radius: 999px; background: #eee; overflow:hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.progressBar { height: 100%; width: 0%; background: #111; transition: width 180ms ease; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stepsMeta { display:flex; justify-content:space-between; gap: 10px; margin-top: 8px; font-size: 13px; color:#666; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.stepsMeta span.active { color:#111; font-weight: 700; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav { display:flex; gap: 10px; margin-top: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav button { padding: 12px 14px; font-size: 16px; border: 1px solid #ddd; border-radius: 10px; background: #fff; cursor:pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav button.primary { background:#111; color:#fff; border-color:#111; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav button:disabled { opacity: .6; cursor:not-allowed; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav .spacer { flex: 1; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>details { border: 1px solid #eee; border-radius: 10px; padding: 10px 12px; background: #fafafa; margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>details summary { cursor:pointer; font-weight: 700; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill { display:inline-block; padding: 2px 10px; border:1px solid #ddd; border-radius: 999px; font-size: 12px; color:#444; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Make invalid field visible and easy to find */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hint { margin-top: 8px; font-size: 13px; color:#444; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 style="margin-bottom:6px;"&gt;Spørgeskemaundersøgelse – Silkeborg Friskole (forår 2026)&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="muted"&gt;Besvarelsen er anonym. &lt;span class="pill"&gt;Ca. 5–8 min.&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stepTitle" id="stepTitle"&gt;Trin 1 af 4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="progressWrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="progressTrack"&gt;&lt;div class="progressBar" id="progressBar"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="stepsMeta" id="stepsMeta"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span data-step="1" class="active"&gt;Intro&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span data-step="2"&gt;Undervisning &amp; samarbejde&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span data-step="3"&gt;Rammer, IT &amp; SFO&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span data-step="4"&gt;Resten&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="status"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;form id="survey" method="POST"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Honeypot --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;Hvis du kan se dette felt, lad det være tomt&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" name="hp" autocomplete="off" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- STEP 1 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="step" data-step="1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;Introduktion&lt;/legend&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Formålet er at indsamle jeres oplevelser og forslag, så vi kan prioritere forbedringer dér, hvor de gør størst forskel.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Du kan gå videre trin for trin — og du kan altid gå tilbage.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;summary&gt;Læs den fulde introduktion&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="muted" style="margin-top:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Her kan du indsætte den lange introtekst fra PDF'en ordret, hvis du vil. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>(Indsæt den lange tekst fra PDF’en her. Det er bedre UX at gemme den bag “Læs mere”, så folk ikke stopper før de starter.)</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Husk: ét skema pr. barn. Hvis du har flere børn, kan du udfylde igen bagefter.</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/details&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="hint"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Når du trykker “Videre”, får du vist spørgsmålene. På hvert trin skal du udfylde det nødvendige, før du kan fortsætte.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- STEP 2 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="step hidden" data-step="2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;Oplysning om barnets klassetrin&lt;/legend&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label for="klassetrin"&gt;Klassetrin&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="klassetrin" name="klassetrin" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="" selected disabled&gt;Vælg…&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;Bhk&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;1.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;2.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;3.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;4.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;5.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;6.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;7.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;8.&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;Generel tilfredshed&lt;/legend&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="muted"&gt;Vælg ét svar pr. spørgsmål. Du kan uddybe med kommentarer.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Hvor tilfreds er du med kvaliteten af undervisningen på skolen?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="q1_kvalitet_undervisning" value="Meget utilfreds"&gt;Meget utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q1_kvalitet_undervisning" value="Utilfreds"&gt;Utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q1_kvalitet_undervisning" value="Hverken tilfreds eller utilfreds"&gt;Hverken tilfreds eller utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q1_kvalitet_undervisning" value="Tilfreds"&gt;Tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q1_kvalitet_undervisning" value="Meget tilfreds"&gt;Meget tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q1_kvalitet_undervisning" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="q1_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Hvor tilfreds er du med dit barns faglige udbytte af undervisningen?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="q2_fagligt_udbytte" value="Meget utilfreds"&gt;Meget utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q2_fagligt_udbytte" value="Utilfreds"&gt;Utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q2_fagligt_udbytte" value="Hverken tilfreds eller utilfreds"&gt;Hverken tilfreds eller utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q2_fagligt_udbytte" value="Tilfreds"&gt;Tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q2_fagligt_udbytte" value="Meget tilfreds"&gt;Meget tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q2_fagligt_udbytte" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="q2_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Hvor tilfreds er du med lærernes/pædagogernes arbejde med at udvikle dit barns evne til at indgå i sociale sammenhænge?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="q3_sociale_evner" value="Meget utilfreds"&gt;Meget utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q3_sociale_evner" value="Utilfreds"&gt;Utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q3_sociale_evner" value="Hverken tilfreds eller utilfreds"&gt;Hverken tilfreds eller utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q3_sociale_evner" value="Tilfreds"&gt;Tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q3_sociale_evner" value="Meget tilfreds"&gt;Meget tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q3_sociale_evner" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="q3_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Hvor tilfreds er du med lærernes/pædagogernes arbejde i forhold til den sociale trivsel i dit barns klasse?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="q4_social_trivsel_klasse" value="Meget utilfreds"&gt;Meget utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q4_social_trivsel_klasse" value="Utilfreds"&gt;Utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q4_social_trivsel_klasse" value="Hverken tilfreds eller utilfreds"&gt;Hverken tilfreds eller utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q4_social_trivsel_klasse" value="Tilfreds"&gt;Tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q4_social_trivsel_klasse" value="Meget tilfreds"&gt;Meget tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q4_social_trivsel_klasse" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="q4_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Hvor tilfreds er du med samarbejdet med skolen omkring dit barn?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="q5_samarbejde_om_barn" value="Meget utilfreds"&gt;Meget utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q5_samarbejde_om_barn" value="Utilfreds"&gt;Utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q5_samarbejde_om_barn" value="Hverken tilfreds eller utilfreds"&gt;Hverken tilfreds eller utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q5_samarbejde_om_barn" value="Tilfreds"&gt;Tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q5_samarbejde_om_barn" value="Meget tilfreds"&gt;Meget tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q5_samarbejde_om_barn" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="q5_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Hvor tilfreds er du med informationsniveauet fra skole til hjem?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="q6_informationsniveau" value="Meget utilfreds"&gt;Meget utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q6_informationsniveau" value="Utilfreds"&gt;Utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q6_informationsniveau" value="Hverken tilfreds eller utilfreds"&gt;Hverken tilfreds eller utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q6_informationsniveau" value="Tilfreds"&gt;Tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q6_informationsniveau" value="Meget tilfreds"&gt;Meget tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="q6_informationsniveau" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="q6_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- STEP 3 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="step hidden" data-step="3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;Faciliteter&lt;/legend&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="muted"&gt;Vurder hver facilitet.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="grid5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;Klasselokalerne&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;select name="fac_klasselokaler" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="" selected disabled&gt;Vælg…&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Meget utilfreds&lt;/option&gt;&lt;option&gt;Utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Hverken tilfreds eller utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Tilfreds&lt;/option&gt;&lt;option&gt;Meget tilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Ved ikke&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;Fællesarealerne&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;select name="fac_faellesarealer" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="" selected disabled&gt;Vælg…&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Meget utilfreds&lt;/option&gt;&lt;option&gt;Utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Hverken tilfreds eller utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Tilfreds&lt;/option&gt;&lt;option&gt;Meget tilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Ved ikke&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;IT-udstyret&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;select name="fac_it" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="" selected disabled&gt;Vælg…&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Meget utilfreds&lt;/option&gt;&lt;option&gt;Utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Hverken tilfreds eller utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Tilfreds&lt;/option&gt;&lt;option&gt;Meget tilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Ved ikke&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;Toiletforholdene&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;select name="fac_toiletter" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="" selected disabled&gt;Vælg…&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Meget utilfreds&lt;/option&gt;&lt;option&gt;Utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Hverken tilfreds eller utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Tilfreds&lt;/option&gt;&lt;option&gt;Meget tilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Ved ikke&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;Udeområdet&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;select name="fac_udeomraade" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="" selected disabled&gt;Vælg…&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Meget utilfreds&lt;/option&gt;&lt;option&gt;Utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Hverken tilfreds eller utilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Tilfreds&lt;/option&gt;&lt;option&gt;Meget tilfreds&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option&gt;Ved ikke&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;textarea name="fac_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;SFO&lt;/legend&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;Hvor tilfreds er du med skolens SFO-tilbud?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input required type="radio" name="sfo_tilfredshed" value="Meget utilfreds"&gt;Meget utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input type="radio" name="sfo_tilfredshed" value="Utilfreds"&gt;Utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input type="radio" name="sfo_tilfredshed" value="Hverken tilfreds eller utilfreds"&gt;Hverken tilfreds eller utilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input type="radio" name="sfo_tilfredshed" value="Tilfreds"&gt;Tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input type="radio" name="sfo_tilfredshed" value="Meget tilfreds"&gt;Meget tilfreds&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input type="radio" name="sfo_tilfredshed" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input type="radio" name="sfo_tilfredshed" value="Ikke relevant"&gt;Ikke relevant&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;textarea name="sfo_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- STEP 4 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;section class="step hidden" data-step="4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;Enig / uenig&lt;/legend&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="muted"&gt;Hvor enig eller uenig er du i udsagnene?&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;De kristne værdier afspejles i hverdagen på Silkeborg Friskole.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="a1_kristne_vaerdier" value="Meget uenig"&gt;Meget uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a1_kristne_vaerdier" value="Uenig"&gt;Uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a1_kristne_vaerdier" value="Hverken enig eller uenig"&gt;Hverken enig eller uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a1_kristne_vaerdier" value="Enig"&gt;Enig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a1_kristne_vaerdier" value="Meget enig"&gt;Meget enig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a1_kristne_vaerdier" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="a1_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Der er en høj grad af faglighed på Silkeborg Friskole.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="a2_hoej_faglighed" value="Meget uenig"&gt;Meget uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a2_hoej_faglighed" value="Uenig"&gt;Uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a2_hoej_faglighed" value="Hverken enig eller uenig"&gt;Hverken enig eller uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a2_hoej_faglighed" value="Enig"&gt;Enig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a2_hoej_faglighed" value="Meget enig"&gt;Meget enig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a2_hoej_faglighed" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="a2_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="q"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;På Silkeborg Friskole bliver der investeret i det enkelte barns trivsel.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input required type="radio" name="a3_investering_trivsel" value="Meget uenig"&gt;Meget uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a3_investering_trivsel" value="Uenig"&gt;Uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a3_investering_trivsel" value="Hverken enig eller uenig"&gt;Hverken enig eller uenig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a3_investering_trivsel" value="Enig"&gt;Enig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a3_investering_trivsel" value="Meget enig"&gt;Meget enig&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label&gt;&lt;input type="radio" name="a3_investering_trivsel" value="Ved ikke"&gt;Ved ikke&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label class="small"&gt;Uddybende kommentarer&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea name="a3_kommentar"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;Åbne spørgsmål&lt;/legend&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;1. Hvad synes du er særligt kendetegnende for Silkeborg Friskole?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;textarea name="o1_kendetegnende" required&gt;&lt;/textarea&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;2. Hvad synes du er skolens største styrke?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;textarea name="o2_stoerste_styrke" required&gt;&lt;/textarea&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;3. Hvilket område, synes du, har mest brug for forbedring?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;textarea name="o3_mest_brug_for_forbedring" required&gt;&lt;/textarea&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;4a. Hvilket spørgsmål ville du gerne have haft, at vi havde stillet?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;textarea name="o4a_spoergsmaal_de_manglede" required&gt;&lt;/textarea&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;4b. Hvad ville du have svaret på det spørgsmål?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;textarea name="o4b_svar_paa_det_spoergsmaal" required&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;legend&gt;Fokusgruppe&lt;/legend&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label&gt;Kunne du/I have lyst til at deltage i et fokusgruppeinterview?&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="likert"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input required type="radio" name="fokusgruppe" value="Ønsker at deltage"&gt;Jeg/vi ønsker at deltage i et fokusgruppeinterview&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;&lt;input type="radio" name="fokusgruppe" value="Ønsker ikke at deltage"&gt;Jeg/vi ønsker ikke at deltage i et fokusgruppeinterview&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="muted small"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Hvis man ønsker at deltage, henvises der til at kontakte skolen direkte (det håndteres ikke via dette anonyme skema).</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button type="button" id="backBtn"&gt;Tilbage&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spacer"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button type="button" class="primary" id="nextBtn"&gt;Videre&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button type="submit" class="primary hidden" id="submitBtn"&gt;Send besvarelse&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Din Apps Script URL</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz2NWfSDdarj0YVp3y5S6tsAzlU07Sj7iV7nF6NnN00lNXBfC5Mq6-1c14i8taWHZ9L/exec";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const form = document.getElementById("survey");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const status = document.getElementById("status");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const backBtn = document.getElementById("backBtn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const nextBtn = document.getElementById("nextBtn");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const submitBtn = document.getElementById("submitBtn");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const progressBar = document.getElementById("progressBar");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stepTitle = document.getElementById("stepTitle");</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const stepsMeta = document.getElementById("stepsMeta");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const steps = Array.from(document.querySelectorAll(".step"));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const totalSteps = steps.length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let currentStep = 1;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>form.action = APPS_SCRIPT_URL;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Vis status fra redirect (hvis du har Apps Script redirect tilbage til ?status=ok/err)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>(function showStatusFromUrl() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const url = new URL(window.location.href);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const st = url.searchParams.get("status");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!st) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (st === "ok") {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>status.innerHTML = `&lt;div class="ok"&gt;Tak! Din besvarelse er sendt. Du kan nu lukke siden — eller udfylde for et barn mere.&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>form.reset();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const msg = url.searchParams.get("msg") || "Ukendt fejl";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>status.innerHTML = `&lt;div class="err"&gt;Noget gik galt: ${escapeHtml(msg)}&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.history.replaceState({}, "", url.origin + url.pathname);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>})();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function render() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>steps.forEach(s =&gt; s.classList.add("hidden"));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const active = steps.find(s =&gt; Number(s.dataset.step) === currentStep);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (active) active.classList.remove("hidden");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pct = ((currentStep - 1) / (totalSteps - 1)) * 100;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>progressBar.style.width = pct + "%";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>stepTitle.textContent = `Trin ${currentStep} af ${totalSteps}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>Array.from(stepsMeta.querySelectorAll("span")).forEach(sp =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>sp.classList.toggle("active", Number(sp.dataset.step) === currentStep);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>backBtn.disabled = currentStep === 1;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// sidste step: vis submit i stedet for next</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const isLast = currentStep === totalSteps;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nextBtn.classList.toggle("hidden", isLast);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>submitBtn.classList.toggle("hidden", !isLast);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Scroll top for overskuelighed</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.scrollTo({ top: 0, behavior: "smooth" });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function validateCurrentStep() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const active = steps.find(s =&gt; Number(s.dataset.step) === currentStep);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!active) return true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// checkValidity virker pr. element (inkl. required radio/select/textarea)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const inputs = Array.from(active.querySelectorAll("input, select, textarea"));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (const el of inputs) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// skip disabled/hidden inputs (honeypot ligger udenfor step)</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (el.disabled) continue;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!el.checkValidity()) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>el.reportValidity();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// scroll til feltet</p>
+<p class="p1"><span class="Apple-converted-space">        </span>el.scrollIntoView({ behavior: "smooth", block: "center" });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>nextBtn.addEventListener("click", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>status.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!validateCurrentStep()) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (currentStep &lt; totalSteps) currentStep += 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>backBtn.addEventListener("click", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>status.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (currentStep &gt; 1) currentStep -= 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>form.addEventListener("submit", (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Valider sidste step (og i praksis hele formen)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>status.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ok = validateCurrentStep();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!ok) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// UX: disable knap så man ikke spammer</p>
+<p class="p1"><span class="Apple-converted-space">    </span>submitBtn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>submitBtn.textContent = "Sender…";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Start rendering</p>
+<p class="p1"><span class="Apple-converted-space">  </span>render();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function escapeHtml(str) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return String(str).replace(/[&amp;&lt;&gt;"']/g, (m) =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"&amp;":"&amp;amp;","&lt;":"&amp;lt;","&gt;":"&amp;gt;",'"':"&amp;quot;","'":"&amp;#039;"</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}[m]));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
